@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { GetDataRequest, GetDataResponse } from "./data_pb.js";
+import { GetDataRequest, GetDataResponse, SubmitWishRequest, SubmitWishResponse } from "./data_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -19,6 +19,15 @@ export const SampleService = {
       name: "GetData",
       I: GetDataRequest,
       O: GetDataResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc api.v1.SampleService.SubmitWish
+     */
+    submitWish: {
+      name: "SubmitWish",
+      I: SubmitWishRequest,
+      O: SubmitWishResponse,
       kind: MethodKind.Unary,
     },
   }

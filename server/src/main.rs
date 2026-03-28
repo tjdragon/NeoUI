@@ -13,6 +13,7 @@ mod gen {
 use gen::api::v1::{
     SampleService, SampleServiceExt,
     GetDataRequestView, GetDataResponse, DataItem, Status,
+    SubmitWishRequestView, SubmitWishResponse,
 };
 
 struct SampleServiceImpl;
@@ -63,6 +64,30 @@ impl SampleService for SampleServiceImpl {
                         ..Default::default()
                     },
                 ],
+                ..Default::default()
+            },
+            ctx,
+        ));
+        async move { result }
+    }
+
+    fn submit_wish(
+        &self,
+        ctx: Context,
+        request: OwnedView<SubmitWishRequestView<'static>>,
+    ) -> impl Future<Output = Result<(SubmitWishResponse, Context), ConnectError>> + Send {
+        let wish = request.wish.to_string();
+        let user = request.user.to_string();
+        
+        println!("Received wish from {}: {}", user, wish);
+
+        let confirmation_id = format!("WISH-{}-{}", user.len(), wish.len());
+
+        let result = Ok((
+            SubmitWishResponse {
+                success: true,
+                confirmation_id: confirmation_id,
+                message: "Wish successfully registered in the NeoUI Matrix.".into(),
                 ..Default::default()
             },
             ctx,

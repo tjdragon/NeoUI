@@ -4,6 +4,7 @@ package api.v1;
 
 service SampleService {
   rpc GetData(GetDataRequest) returns (GetDataResponse);
+  rpc SubmitWish(SubmitWishRequest) returns (SubmitWishResponse);
 }
 
 message GetDataRequest {
@@ -29,4 +30,15 @@ enum Status {
   STATUS_ACTIVE = 1;
   STATUS_PENDING = 2;
   STATUS_ERROR = 3;
+}
+
+message SubmitWishRequest {
+  string wish = 1;
+  string user = 2;
+}
+
+message SubmitWishResponse {
+  bool success = 1;
+  string confirmation_id = 2;
+  string message = 3;
 }

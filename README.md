@@ -85,3 +85,5 @@ npm run dev
 > The Vite client development server will start on `http://localhost:5173`. Open this URL in your browser to view the UI.
 
 The UI will automatically poll the Rust backend every 5 seconds, displaying dynamically rendered telemetry data using modern glassmorphism styling.
+
+![UI](./screenshot/NeoUI.png)

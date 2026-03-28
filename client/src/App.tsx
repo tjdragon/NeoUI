@@ -8,6 +8,28 @@ export default function App() {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState<string>('Connecting...');
+  
+  const [wish, setWish] = useState('');
+  const [wishStatus, setWishStatus] = useState<string | null>(null);
+
+  const handleSubmitWish = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!wish.trim()) return;
+    setWishStatus('Submitting...');
+    try {
+      const response = await client.submitWish({ wish, user: 'NeoUI User' });
+      if (response.success) {
+        setWishStatus(`Success! ID: ${response.confirmationId} - ${response.message}`);
+        setWish('');
+      } else {
+        setWishStatus('Wish was not successful.');
+      }
+    } catch (err) {
+      console.error('Failed to submit wish', err);
+      setWishStatus('Error: Failed to communicate with server.');
+    }
+    setTimeout(() => setWishStatus(null), 5000);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,6 +105,21 @@ export default function App() {
              RPC Status: {status}
           </span>
         </div>
+      </div>
+
+      <div className="glass-card" style={{ marginBottom: '2rem' }}>
+        <h3>Make a Matrix Wish</h3>
+        <form onSubmit={handleSubmitWish} style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+          <input 
+            type="text" 
+            value={wish}
+            onChange={(e) => setWish(e.target.value)}
+            placeholder="What do you desire?" 
+            style={{ flex: 1, padding: '0.75rem', borderRadius: '0.75rem', border: '1px solid var(--glass-border)', background: 'rgba(0,0,0,0.2)', color: 'white' }} 
+          />
+          <button type="submit" className="button" disabled={!wish.trim()}>Submit</button>
+        </form>
+        {wishStatus && <p style={{ marginTop: '1rem', color: 'var(--accent-color)' }}>{wishStatus}</p>}
       </div>
 
       <div className="grid">

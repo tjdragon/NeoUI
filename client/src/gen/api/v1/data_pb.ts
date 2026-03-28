@@ -185,3 +185,95 @@ export class DataItem extends Message<DataItem> {
   }
 }
 
+/**
+ * @generated from message api.v1.SubmitWishRequest
+ */
+export class SubmitWishRequest extends Message<SubmitWishRequest> {
+  /**
+   * @generated from field: string wish = 1;
+   */
+  wish = "";
+
+  /**
+   * @generated from field: string user = 2;
+   */
+  user = "";
+
+  constructor(data?: PartialMessage<SubmitWishRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.SubmitWishRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "wish", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "user", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubmitWishRequest {
+    return new SubmitWishRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SubmitWishRequest {
+    return new SubmitWishRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SubmitWishRequest {
+    return new SubmitWishRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: SubmitWishRequest | PlainMessage<SubmitWishRequest> | undefined, b: SubmitWishRequest | PlainMessage<SubmitWishRequest> | undefined): boolean {
+    return proto3.util.equals(SubmitWishRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message api.v1.SubmitWishResponse
+ */
+export class SubmitWishResponse extends Message<SubmitWishResponse> {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success = false;
+
+  /**
+   * @generated from field: string confirmation_id = 2;
+   */
+  confirmationId = "";
+
+  /**
+   * @generated from field: string message = 3;
+   */
+  message = "";
+
+  constructor(data?: PartialMessage<SubmitWishResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "api.v1.SubmitWishResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "success", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "confirmation_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubmitWishResponse {
+    return new SubmitWishResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SubmitWishResponse {
+    return new SubmitWishResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SubmitWishResponse {
+    return new SubmitWishResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: SubmitWishResponse | PlainMessage<SubmitWishResponse> | undefined, b: SubmitWishResponse | PlainMessage<SubmitWishResponse> | undefined): boolean {
+    return proto3.util.equals(SubmitWishResponse, a, b);
+  }
+}
+
