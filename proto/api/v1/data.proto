@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package api.v1;
+
+service SampleService {
+  rpc GetData(GetDataRequest) returns (GetDataResponse);
+}
+
+message GetDataRequest {
+  string query = 1;
+}
+
+message GetDataResponse {
+  repeated DataItem items = 1;
+  string status = 2;
+}
+
+message DataItem {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  string timestamp = 4;
+  double value = 5;
+  Status type = 6;
+}
+
+enum Status {
+  STATUS_UNSPECIFIED = 0;
+  STATUS_ACTIVE = 1;
+  STATUS_PENDING = 2;
+  STATUS_ERROR = 3;
+}
