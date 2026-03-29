@@ -26,3 +26,9 @@ Cargo.lock
 # Protobuf auto-generated (Optional: depending on team preferences)
 # We won't ignore them here as some teams prefer to check-in generated code.
 # /client/src/gen/
+
+# Java / Gradle (Server)
+/javaserver/.gradle/
+/javaserver/build/
+/javaserver/out/
+/javaserver/bin/

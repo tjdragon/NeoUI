@@ -1,8 +1,8 @@
 import { createPromiseClient } from "@connectrpc/connect";
-import { createConnectTransport } from "@connectrpc/connect-web";
+import { createGrpcWebTransport } from "@connectrpc/connect-web";
 import { SampleService } from "./gen/api/v1/data_connect";
 
-export const transport = createConnectTransport({
+export const transport = createGrpcWebTransport({
   baseUrl: "http://localhost:8080",
 });
 
