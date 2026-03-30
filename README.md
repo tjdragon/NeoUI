@@ -1,6 +1,6 @@
 # Neo UI
 
-NeoUI Matrix is a full-stack web application demonstrating a modern, highly efficient client-server architecture using **Rust**, **TypeScript**, **React**, and **ConnectRPC**.
+NeoUI is a full-stack web application demonstrating a modern, highly efficient client-server architecture using **Rust**, **TypeScript**, **React**, and **ConnectRPC**.
 
 ## Architecture Overview
 
